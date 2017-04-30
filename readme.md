@@ -127,9 +127,11 @@ $ source ~/.zshrc
 ### Baixar o último FileZilla disponível para o Ubuntu 16.04
 ```
 $ sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu xenial-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'
-$ wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
-& sudo apt update && sudo apt install -y filezilla
+$ wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add - 
+$ sudo apt update && sudo apt install -y filezilla
 ```
+
+Abra o FileZilla, e vá em Editar -> Preferências. Entre nas opções de Transferência -> Tipos de Arquivo. Selecione "Binário" ao invés de "Automático". Esta é uma correção para que os arquivos não contenham inúmeros espaços em branco quando ocorrem algumas exceções no envio de arquivos por FTP.
 
 ### Instalar o Ubuntu Make
 ```
@@ -229,6 +231,39 @@ $ sudo systemctl restart php5.6-fpm
 Por último, na instalação do(s) PHP(s), sugiro instalar o Xdebug para ajudar na depuração dos códigos:
 ```
 $ sudo apt install -y php-xdebug
+```
+
+Para configuração do Xdebug, se tiver o PHP 7.1 instalado
+```
+$ echo "xdebug.remote_enable=1" | sudo tee -a /etc/php/7.1/mods-available/xdebug.ini
+$ echo "xdebug.remote_connect_back=1" | sudo tee -a /etc/php/7.1/mods-available/xdebug.ini
+$ echo "xdebug.remote_port=9000" | sudo tee -a /etc/php/7.1/mods-available/xdebug.ini
+$ # Se você for utilizar o PHPStorm como IDE, rode o seguinte comando:
+$ echo "xdebug.idekey=PHPSTORM" | sudo tee -a /etc/php/7.1/mods-available/xdebug.ini
+$ # Reiniciar o daemon PHP-FPM
+$ sudo systemctl restart php7.1-fpm
+```
+
+Para configuração do Xdebug, se tiver o PHP 7.0 instalado
+```
+$ echo "xdebug.remote_enable=1" | sudo tee -a /etc/php/7.0/mods-available/xdebug.ini
+$ echo "xdebug.remote_connect_back=1" | sudo tee -a /etc/php/7.0/mods-available/xdebug.ini
+$ echo "xdebug.remote_port=9000" | sudo tee -a /etc/php/7.0/mods-available/xdebug.ini
+$ # Se você for utilizar o PHPStorm como IDE, rode o seguinte comando:
+$ echo "xdebug.idekey=PHPSTORM" | sudo tee -a /etc/php/7.0/mods-available/xdebug.ini
+$ # Reiniciar o daemon PHP-FPM
+$ sudo systemctl restart php7.0-fpm
+```
+
+Para configuração do Xdebug, se tiver o PHP 5.6 instalado
+```
+$ echo "xdebug.remote_enable=1" | sudo tee -a /etc/php/5.6/mods-available/xdebug.ini
+$ echo "xdebug.remote_connect_back=1" | sudo tee -a /etc/php/5.6/mods-available/xdebug.ini
+$ echo "xdebug.remote_port=9000" | sudo tee -a /etc/php/5.6/mods-available/xdebug.ini
+$ # Se você for utilizar o PHPStorm como IDE, rode o seguinte comando:
+$ echo "xdebug.idekey=PHPSTORM" | sudo tee -a /etc/php/5.6/mods-available/xdebug.ini
+$ # Reiniciar o daemon PHP-FPM
+$ sudo systemctl restart php5.6-fpm
 ```
 
 Aproveitando o passo de instalação do PHP, sugiro a instalação das ferramentas de linha de comando, como o composer, wp-cli, n98-magerun, laravel, symfony e outros...
