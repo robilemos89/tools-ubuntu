@@ -31,7 +31,7 @@ $ sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian 
 
 Atualizar a lista de pacotes dos repositórios, e instalar o Google Chrome, LibreOffice mais recente, Wine e outros...
 ```
-$ sudo apt update && sudo apt dist-upgrade -y && sudo apt install -y google-chrome-stable wine-staging wine-staging-compat wine-gecko2.21 wine-mono0.0.8 winetricks unity-tweak-tool caffeine openssl curl sqlite3 libsqlite3-dev oracle-java8-installer oracle-java8-set-default vlc virtualbox-5.1 parcellite meld ttf-mscorefonts-installer ruby ruby-dev
+$ sudo apt update && sudo apt dist-upgrade -y && sudo apt install -y google-chrome-stable wine-staging wine-staging-compat wine-gecko2.21 wine-mono0.0.8 winetricks unity-tweak-tool caffeine openssl curl sqlite3 libsqlite3-dev oracle-java8-installer oracle-java8-set-default vlc virtualbox-5.1 parcellite meld ttf-mscorefonts-installer ruby ruby-dev xclip
 ```
 
 O VirtualBox foi instalado junto nesta leva. É necessário o passo a seguir para adicionar a permissão ao seu usuário para usá-lo. Para isso, digite:
@@ -45,7 +45,7 @@ $ sudo rm /etc/apt/sources.list.d/google.list*
 $ sudo apt-update
 ```
 
-Você precisa configurar o git para utilizar as suas informações. Para isso (LEIA COM ATENÇÃO OS COMANDOS A SEGUIR, E FAÇA A ADAPTAÇÃO NECESSÁRIA PARA SEU CASO), use:
+Você precisa configurar o git para utilizar as suas informações. Para isso **(LEIA COM ATENÇÃO OS COMANDOS A SEGUIR, E FAÇA A ADAPTAÇÃO NECESSÁRIA PARA SEU CASO)**, use:
 ```
 $ git config --global user.email "seuemail@coloqueaqui.com"
 $ git config --global user.name "Seu Nome Aqui"
@@ -338,6 +338,31 @@ $ sudo apt update && sudo apt install -y mariadb-server
 $ wget -O /tmp/heidisql.exe https://www.heidisql.com/installers/HeidiSQL_9.4.0.5125_Setup.exe
 $ WINEARCH=win32 wine wineboot --init
 $ wine /tmp/heidisql.exe
+```
+
+## Instalando o MailCatcher
+```
+$ sudo gem install mailcatcher
+```
+
+Para utilizá-lo, rode:
+```
+$ mailcatcher
+```
+
+Ele mostrará no terminal a informação do endereço em que ele estará disponível.
+
+Para configurar o PHP para enviar e-mails através do MailCatcher, rode estes comandos, de acordo com as versões do PHP que estão instaladas:
+```
+$ # Para o PHP 7.1, rode:
+$ sudo sed -i "s/\;sendmail_path\ =/sendmail_path\ =\ \/usr\/bin\/env\ catchmail\ \-f email\@teste\.com/" /etc/php/7.1/fpm/php.ini
+$ sudo systemctl restart php7.1-fpm
+$ # Para o PHP 7.0, rode:
+$ sudo sed -i "s/\;sendmail_path\ =/sendmail_path\ =\ \/usr\/bin\/env\ catchmail\ \-f email\@teste\.com/" /etc/php/7.0/fpm/php.ini
+$ sudo systemctl restart php7.0-fpm
+$ $ Para o PHP 5.6, rode:
+$ sudo sed -i "s/\;sendmail_path\ =/sendmail_path\ =\ \/usr\/bin\/env\ catchmail\ \-f email\@teste\.com/" /etc/php/7.1/fpm/php.ini
+$ sudo systemctl restart php5.6-fpm
 ```
 
 4. Ajustes no sistema
