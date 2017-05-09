@@ -74,6 +74,13 @@ $ echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sou
 $ sudo apt update && sudo apt install -y spotify-client
 ```
 
+### Instalação do TeamViewer
+```
+$ wget -O /tmp/teamviewer.deb https://download.teamviewer.com/download/teamviewer_i386.deb
+$ sudo dpkg -i /tmp/teamviewer.deb
+$ sudo apt install -f -y
+```
+
 ### Gosto de utilizar o oh-my-zsh em conjunto com o shell ZSH. Para isto, basta seguir estes passos:
 ```
 $ sudo apt install -y zsh
