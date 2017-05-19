@@ -28,11 +28,13 @@ $ sudo add-apt-repository -y ppa:caffeine-developers/ppa
 $ sudo add-apt-repository -y ppa:webupd8team/java
 $ sudo add-apt-repository -y ppa:videolan/stable-daily
 $ sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian xenial contrib"
+$ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+$ sudo add-apt-repository -y ppa:noobslab/apps
 ```
 
 Atualizar a lista de pacotes dos repositórios, e instalar o Google Chrome, LibreOffice mais recente, Wine e outros...
 ```shell
-$ sudo apt update && sudo apt dist-upgrade -y && sudo apt install -y google-chrome-stable wine-staging wine-staging-compat wine-gecko2.21 wine-mono0.0.8 winetricks unity-tweak-tool caffeine openssl curl sqlite3 libsqlite3-dev oracle-java8-installer oracle-java8-set-default vlc virtualbox-5.1 parcellite meld ttf-mscorefonts-installer ruby ruby-dev xclip
+$ sudo apt update && sudo apt dist-upgrade -y && sudo apt install -y google-chrome-stable wine-staging wine-staging-compat wine-gecko2.21 wine-mono0.0.8 winetricks unity-tweak-tool caffeine openssl curl sqlite3 sshfs libsqlite3-dev oracle-java8-installer oracle-java8-set-default vlc virtualbox-5.1 parcellite meld ttf-mscorefonts-installer ruby ruby-dev xclip playonlinux
 ```
 
 O VirtualBox foi instalado junto nesta leva. É necessário o passo a seguir para adicionar a permissão ao seu usuário para usá-lo. Para isso, digite:
@@ -54,6 +56,12 @@ $ git config --global user.name "Seu Nome Aqui"
 
 
 2. Skype, shutter, recordmyscreen, oh-my-zsh, fontes e preferências pessoais
+### Instalação do TLP mais recente (para notebooks)
+```shell
+$ sudo add-apt-repository -y ppa:linrunner/tlp
+$ sudo apt update && sudo apt install -y tlp
+```
+
 ### Instalação do Skype
 ```shell
 $ dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y" 
