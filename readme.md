@@ -30,11 +30,13 @@ $ sudo add-apt-repository -y ppa:videolan/stable-daily
 $ sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian xenial contrib"
 $ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 $ sudo add-apt-repository -y ppa:noobslab/apps
+$ sudo apt-add-repository -y ppa:eosrei/fonts
+$ sudo add-apt-repository -y ppa:ys/emojione-picker
 ```
 
 Atualizar a lista de pacotes dos repositórios, e instalar o Google Chrome, LibreOffice mais recente, Wine e outros...
 ```shell
-$ sudo apt update && sudo apt dist-upgrade -y && sudo apt install -y google-chrome-stable wine-staging wine-staging-compat wine-gecko2.21 wine-mono0.0.8 winetricks unity-tweak-tool caffeine openssl curl sqlite3 sshfs libsqlite3-dev oracle-java8-installer oracle-java8-set-default vlc virtualbox-5.1 parcellite meld ttf-mscorefonts-installer ruby ruby-dev xclip playonlinux
+$ sudo apt update && sudo apt dist-upgrade -y && sudo apt install -y google-chrome-stable wine-staging wine-staging-compat wine-gecko2.21 wine-mono0.0.8 winetricks unity-tweak-tool caffeine openssl curl sqlite3 sshfs libsqlite3-dev oracle-java8-installer oracle-java8-set-default vlc virtualbox-5.1 parcellite meld ttf-mscorefonts-installer ruby ruby-dev xclip playonlinux fonts-emojione-svginot emojione-picker
 ```
 
 O VirtualBox foi instalado junto nesta leva. É necessário o passo a seguir para adicionar a permissão ao seu usuário para usá-lo. Para isso, digite:
