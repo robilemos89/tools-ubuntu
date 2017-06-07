@@ -1,15 +1,20 @@
 # Minha configuração base do Ubuntu
 Estes passos foram seguidos em cima do Ubuntu 16.04.2. Escolhi uma versão LTS para trabalhar por conta da estabilidade e confiabilidade da base, fora que o mesmo é utilizado em VPS e em Cloud, facilitando um pouco a vida para o aprendizado na implementação de alguma funcionalidade nestes ambientes.
 
+## Adições
+* [07/06/2017] Formatei melhor o arquivo para se achar melhor nos tópicos.
+* [07/06/2017] Adicionei como instalar o aplicativo f.lux para temperatura de tela nas minhas preferências pessoais.
+
 Os passos a seguir, são aplicados a todos os flavours do Ubuntu. Pode ser o próprio Ubuntu com Unity, Gnome, Xubuntu, Lubuntu, não importa.
 
 Para começo de conversa, após a instalação do Ubuntu, abra o terminal (procure por terminal no menu, ou simplesmente, Ctrl+Alt+T), e rode estes comandos para atualizar a lista de pacotes iniciais, e atualizar o sistema:
 
 ```shell
 $ sudo apt update && sudo apt dist-upgrade -y
-```
+``` 
 
-1. Instalação inicial
+---
+## 1. Instalação inicial
 Instalação de alguns aplicativos básicos que considero essenciais no dia-a-dia.
 ```shell
 $ sudo apt-get install vim zsh git
@@ -57,7 +62,7 @@ $ git config --global user.name "Seu Nome Aqui"
 ```
 
 
-2. Skype, shutter, recordmyscreen, oh-my-zsh, fontes e preferências pessoais
+## 2. Skype, shutter, recordmyscreen, oh-my-zsh, fontes e preferências pessoais
 ### Instalação do TLP mais recente (para notebooks)
 ```shell
 $ sudo add-apt-repository -y ppa:linrunner/tlp
@@ -77,6 +82,12 @@ $ sudo apt-get install skypeforlinux -y
 ```shell
 $ sudo add-apt-repository -y ppa:shutter/ppa
 $ sudo apt update && sudo apt install -y shutter
+```
+
+### Instalação do f.lux (aplicativo para controle automático de temperatura da tela)
+```shell
+$ sudo add-apt-repository -y ppa:nathan-renniewaldock/flux
+$ sudo apt update && sudo apt install -y fluxgui
 ```
 
 ### Instalação do Spotify
@@ -125,7 +136,7 @@ $ sudo add-apt-repository -y ppa:moka/daily
 $ sudo apt update && sudo apt install -y moka-icon-theme faba-icon-theme faba-mono-icons
 ```
 
-3. Instalação das ferramentas de desenvolvimento
+## 3. Instalação das ferramentas de desenvolvimento
 ### Criar uma pasta para conter scripts e outros no diretório do usuário atual
 ```shell
 $ mkdir -p $HOME/bin
@@ -216,7 +227,7 @@ Também aconselho a instalar o yarn, bower, gulp-cli, aproveitando o passo:
 $ npm -g i yarn gulp-cli bower yo generator-webapp 
 ```
 
-## Instalar o último PHP disponível
+### Instalar o último PHP disponível
 ```shell
 $ sudo add-apt-repository -y ppa:ondrej/php
 $ sudo apt update && sudo apt-get dist-upgrade -y && sudo apt-get install -y php7.1-bcmath php7.1-bz2 php7.1-curl php7.1-dev php7.1-enchant php7.1-fpm php7.1-gd php7.1-gmp php7.1-imap php7.1-intl php7.1-json php7.1-ldap php7.1-mbstring php7.1-mcrypt php7.1-mysql php7.1-odbc php7.1-opcache php7.1-pgsql php7.1-pspell php7.1-readline php7.1-soap php7.1-sqlite3 php7.1-tidy php7.1-xml php7.1-xmlrpc php7.1-xsl php7.1-zip
@@ -305,7 +316,7 @@ $ echo PATH=$HOME/.config/composer/vendor/bin:$PATH >> ~/.zshrc && echo PATH=$HO
 $ curl -LsS https://symfony.com/installer -o symfony && chmod +x symfony
 ```
 
-## Apache
+### Apache
 Vamos instalar o último Apache disponível
 ```shell
 $ sudo add-apt-repository -y ppa:ondrej/apache2
@@ -318,7 +329,7 @@ Acompanha este guia dois arquivos para automatizar a configuração do Apache pa
 $ sudo ./install.sh
 ```
 
-## SoapUI
+### SoapUI
 ```shell
 $ wget -O /tmp/soapui.sh https://b537910400b7ceac4df0-22e92613740a7dd1247910134033c0d1.ssl.cf5.rackcdn.com/soapui/5.3.0/SoapUI-x64-5.3.0.sh
 $ chmod +x /tmp/soapui.sh
@@ -326,9 +337,9 @@ $ /tmp/soapui.sh -q -dir ~/Programas/soapui
 $ cd ~ && rm -rf WSDL-WADL Sample-* popular-apis
 $ cp Programas/soapui/SoapUI-5.3.0.desktop ~/.local/share/applications/
 ```
-
-### Os próximos passos ficam por conta do freguês, se quer usar o MySQL ou o MariaDB
-## Instalar o MySQL e MySQL Workbench
+---
+**Os próximos passos ficam por conta do freguês, se quer usar o MySQL ou o MariaDB**
+### Instalar o MySQL e MySQL Workbench
 ```shell
 $ wget -O /tmp/mysql-apt.deb https://dev.mysql.com/get/mysql-apt-config_0.8.4-1_all.deb
 $ sudo dpkg -i /tmp/mysql-apt.deb
@@ -352,7 +363,7 @@ flush privileges;
 
 Com isso será possível logar no MySQL como root sem precisar ser root. Tem uma explicação melhor no Stack Overflow, neste [link](https://askubuntu.com/questions/766334/cant-login-as-mysql-user-root-from-normal-user-account-in-ubuntu-16-04).
 
-## Instalar o MariaDB
+### Instalar o MariaDB
 ```shell
 $ sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
 $ sudo add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirror.ufscar.br/mariadb/repo/10.1/ubuntu xenial main'
@@ -361,14 +372,14 @@ $ sudo apt update && sudo apt install -y mariadb-server
 
 ---
 
-## Instalar o HeidiSQL
+### Instalar o HeidiSQL
 ```shell
 $ wget -O /tmp/heidisql.exe https://www.heidisql.com/installers/HeidiSQL_9.4.0.5125_Setup.exe
 $ WINEARCH=win32 wine wineboot --init
 $ wine /tmp/heidisql.exe
 ```
 
-## Instalando o MailCatcher
+### Instalando o MailCatcher
 ```shell
 $ sudo gem install mailcatcher
 ```
@@ -394,7 +405,7 @@ $ sudo systemctl restart php5.6-fpm
 ```
 
 4. Ajustes no sistema
-## Ajustando o parâmetro max_user_watches
+### Ajustando o parâmetro max_user_watches
 As IDEs da JetBrains sempre dão o aviso em algum ponto que o max_user_watches são de valor muito baixo. Para corrigir, de acordo com a documentação da JetBrains, faça isto:
 ```shell
 $ echo "fs.inotify.max_user_watches = 524288" | sudo tee -a /etc/sysctl.d/99-idea.conf
